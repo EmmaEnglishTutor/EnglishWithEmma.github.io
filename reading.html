@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading & Research — Emma, English Tuition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDEAE0;
+    --paper-dark: #E4E0D2;
+    --ink: #1A1E17;
+    --forest: #1F3A32;
+    --forest-deep: #16281F;
+    --gold: #AD8A3D;
+    --oxblood: #6B2A2A;
+    --muted: #6b6a5e;
+    --line: #C9C3AE;
+    --serif: 'Fraunces', serif;
+    --sans: 'Work Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+  :focus-visible{outline:2px solid var(--oxblood); outline-offset:3px;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  header{position:sticky; top:0; z-index:50; background:rgba(237,234,224,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px;}
+  .brand{font-family:var(--serif); font-weight:600; font-size:1.15rem;}
+  .brand span{color:var(--oxblood); font-style:italic; font-weight:500;}
+  .navlinks{display:flex; gap:32px; font-family:var(--mono); font-size:0.78rem; letter-spacing:0.02em; text-transform:uppercase;}
+  .navlinks a{text-decoration:none; color:var(--ink); position:relative; padding-bottom:4px;}
+  .navlinks a::after{content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--oxblood); transition:width 0.25s ease;}
+  .navlinks a:hover::after{width:100%;}
+  .navlinks a.current::after{width:100%;}
+  .navcta{font-family:var(--mono); font-size:0.78rem; text-transform:uppercase; border:1px solid var(--ink); padding:9px 16px; text-decoration:none; transition:background 0.2s ease, color 0.2s ease;}
+  .navcta:hover{background:var(--ink); color:var(--paper);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  .page-hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--oxblood); margin-bottom:18px; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:'§'; font-size:1rem;}
+  h1{font-family:var(--serif); font-weight:600; font-size:clamp(2.1rem, 4.4vw, 3.1rem); line-height:1.08; letter-spacing:-0.01em; margin-bottom:20px; max-width:20ch;}
+  .page-sub{font-size:1.05rem; color:#3c3b32; max-width:60ch;}
+
+  section{padding:72px 0;}
+  .section-head{margin-bottom:44px; max-width:64ch;}
+  .section-tag{font-family:var(--mono); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--oxblood); margin-bottom:14px;}
+  h2{font-family:var(--serif); font-weight:600; font-size:clamp(1.6rem, 3vw, 2.1rem); letter-spacing:-0.01em; margin-bottom:10px;}
+  .section-note{color:var(--muted); max-width:64ch; font-size:0.95rem;}
+
+  .source-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .source-card{background:var(--paper); padding:30px 30px;}
+  .source-meta{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:14px;}
+  .source-org{font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--oxblood);}
+  .source-year{font-family:var(--mono); font-size:0.72rem; color:var(--muted);}
+  .source-title{font-family:var(--serif); font-weight:600; font-size:1.25rem; margin-bottom:12px;}
+  .source-body{color:#33322a; max-width:66ch; margin-bottom:16px;}
+  .source-link{
+    font-family:var(--mono); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.03em;
+    color:var(--forest); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px;
+  }
+  .source-link:hover{color:var(--oxblood); border-color:var(--oxblood);}
+
+  .readinglists{background:var(--forest); color:var(--paper);}
+  .readinglists .section-tag{color:var(--gold);}
+  .readinglists h2{color:var(--paper);}
+  .readinglists .section-note{color:#D6D2C2;}
+  .list-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:rgba(237,234,224,0.18); border:1px solid rgba(237,234,224,0.18); margin-top:44px;}
+  @media (max-width:760px){ .list-grid{grid-template-columns:1fr;} }
+  .list-card{background:var(--forest); padding:30px 28px;}
+  .list-card h3{font-family:var(--serif); font-weight:600; font-size:1.15rem; margin-bottom:6px;}
+  .list-card .list-sub{font-family:var(--mono); font-size:0.7rem; color:var(--gold); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:16px;}
+  .placeholder-list{list-style:none;}
+  .placeholder-list li{
+    border-top:1px dashed rgba(237,234,224,0.3); padding:12px 0; color:#B9B6A6; font-size:0.9rem;
+  }
+  .placeholder-list li:last-child{border-bottom:1px dashed rgba(237,234,224,0.3);}
+  .howto{
+    margin-top:36px; background:rgba(237,234,224,0.08); border:1px dashed rgba(237,234,224,0.3);
+    padding:22px 26px; font-size:0.9rem; color:#D6D2C2;
+  }
+  .howto strong{color:var(--paper);}
+
+  footer{border-top:1px solid var(--line); padding:32px 0; font-family:var(--mono); font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><a href="index.html" style="text-decoration:none;">Emma <span>— English Tuition</span></a></div>
+    <div class="navlinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#subjects">Subjects</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="reading.html" class="current">Reading</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a class="navcta" href="index.html#contact">Enquire</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Reading & research</div>
+    <h1>Why reading matters, and why one-to-one teaching works.</h1>
+    <p class="page-sub">A short, sourced collection on reading for pleasure and the evidence behind individual tuition — for any parent who wants the case for it, not just my word for it. Every source below is linked directly.</p>
+  </div>
+</section>
+
+<section id="reading-research">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">On reading</div>
+      <h2>The case for reading, from the people who study it.</h2>
+      <p class="section-note">Michael Rosen has spent decades arguing for reading as something worth doing for its own sake, not just for the exam. Recent national data shows why that argument matters more than ever.</p>
+    </div>
+
+    <div class="source-list">
+      <div class="source-card">
+        <div class="source-meta"><span class="source-org">Michael Rosen</span><span class="source-year">Blog, 2019</span></div>
+        <div class="source-title">A 20-point plan for reading for pleasure</div>
+        <p class="source-body">Rosen sets out practical ways adults can build a genuine reading culture around children — from reading aloud regularly to leaving room for real conversation about books, rather than treating every book as a comprehension test.</p>
+        <a class="source-link" href="http://michaelrosenblog.blogspot.com/2019/03/20-point-plan-for-reading-for-pleasure.html" target="_blank" rel="noopener">Read the source →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-meta"><span class="source-org">Michael Rosen</span><span class="source-year">Blog, 2021</span></div>
+        <div class="source-title">Reading for pleasure — how does it work its magic?</div>
+        <p class="source-body">Rosen explores how the structure of stories — sequence, cause and effect, the slow reveal of a plot — trains a kind of thinking that goes well beyond the page, and why wide, frequent reading matters as much as any single book.</p>
+        <a class="source-link" href="http://michaelrosenblog.blogspot.com/2021/02/reading-for-pleasure-great-time-to-be.html" target="_blank" rel="noopener">Read the source →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-meta"><span class="source-org">National Literacy Trust</span><span class="source-year">2025</span></div>
+        <div class="source-title">Children and young people's reading in 2025</div>
+        <p class="source-body">Based on responses from over 114,000 children and young people, this report found reading enjoyment at its lowest level in twenty years — but also that pupils who enjoy reading are more than twice as likely to have above-average reading skills.</p>
+        <a class="source-link" href="https://literacytrust.org.uk/research-services/research-reports/children-and-young-peoples-reading-in-2025/" target="_blank" rel="noopener">Read the source →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-meta"><span class="source-org">National Literacy Trust</span><span class="source-year">Ongoing</span></div>
+        <div class="source-title">Reading for Pleasure hub</div>
+        <p class="source-body">The Trust's ongoing research programme, linking reading enjoyment to wider outcomes including wellbeing, empathy and long-term academic success, alongside practical guidance for building a stronger reading culture at home and at school.</p>
+        <a class="source-link" href="https://literacytrust.org.uk/reading-for-pleasure/" target="_blank" rel="noopener">Read the source →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tuition-research" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-dark);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">On one-to-one tuition</div>
+      <h2>What the evidence says about individual teaching.</h2>
+      <p class="section-note">One-to-one tuition is one of the most consistently well-evidenced interventions in education research, across independent academic studies and UK government-funded evaluations alike.</p>
+    </div>
+
+    <div class="source-list">
+      <div class="source-card">
+        <div class="source-meta"><span class="source-org">Education Endowment Foundation</span><span class="source-year">Toolkit, updated 2025</span></div>
+        <div class="source-title">One to one tuition — Teaching & Learning Toolkit</div>
+        <p class="source-body">The EEF's toolkit, drawn from a meta-analysis of controlled studies, rates one-to-one tuition as high impact for moderate cost, with pupils typically making several additional months of progress compared with those who don't receive it.</p>
+        <a class="source-link" href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/one-to-one-tuition" target="_blank" rel="noopener">Read the source →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-meta"><span class="source-org">Nickow, Oreopoulos & Quan</span><span class="source-year">Review of Educational Research, 2024</span></div>
+        <div class="source-title">The Promise of Tutoring for PreK–12 Learning</div>
+        <p class="source-body">This systematic review and meta-analysis of experimental tutoring studies found consistently substantial positive effects on learning, with the strongest results for programmes delivered by qualified teachers rather than volunteers or parents.</p>
+        <a class="source-link" href="https://journals.sagepub.com/doi/10.3102/00028312231208687" target="_blank" rel="noopener">Read the source →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-meta"><span class="source-org">NFER, for the Department for Education</span><span class="source-year">2024</span></div>
+        <div class="source-title">National Tutoring Programme Year 3: Impact Evaluation</div>
+        <p class="source-body">This independent evaluation of England's National Tutoring Programme found tutoring associated with measurable improvements in pupil outcomes, with school leaders also reporting a strong, consistent perception of impact on pupils' confidence.</p>
+        <a class="source-link" href="https://www.nfer.ac.uk/publications/national-tutoring-programme-year-3-impact-evaluation/" target="_blank" rel="noopener">Read the source →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="readinglists" id="reading-lists">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Reading lists</div>
+      <h2>Book lists by stage.</h2>
+      <p class="section-note">Space for tailored recommendations — fill each list in with the titles you set for students at that stage. Placeholder rows are marked below.</p>
+    </div>
+
+    <div class="list-grid">
+      <div class="list-card">
+        <div class="list-sub">Ages 10–13</div>
+        <h3>11+, 13+ & Scholarship</h3>
+        <ul class="placeholder-list">
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+        </ul>
+      </div>
+      <div class="list-card">
+        <div class="list-sub">Key Stage 3</div>
+        <h3>Ages 11–14</h3>
+        <ul class="placeholder-list">
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+        </ul>
+      </div>
+      <div class="list-card">
+        <div class="list-sub">Key Stage 4</div>
+        <h3>GCSE English</h3>
+        <ul class="placeholder-list">
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+        </ul>
+      </div>
+      <div class="list-card">
+        <div class="list-sub">Key Stage 5</div>
+        <h3>A-Level & IB English</h3>
+        <ul class="placeholder-list">
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+          <li>[Add title — author]</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="howto">
+      <strong>To edit these lists:</strong> just tell me the titles for each stage and I'll drop them straight in — or send me the file and I can talk you through editing the <code>&lt;ul class="placeholder-list"&gt;</code> block for each card directly.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Emma — English Tuition</div>
+    <div><a href="index.html" style="text-decoration:none;">← Back to home</a></div>
+    <div>Dulwich, London SE24</div>
+  </div>
+</footer>
+
+</body>
+</html>
