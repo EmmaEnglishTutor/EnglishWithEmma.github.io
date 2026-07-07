@@ -1,1 +1,477 @@
-# EnglishWithEmma.github.io
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma — English Tuition, SE24</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDEAE0;
+    --paper-dark: #E4E0D2;
+    --ink: #1A1E17;
+    --forest: #1F3A32;
+    --forest-deep: #16281F;
+    --gold: #AD8A3D;
+    --oxblood: #6B2A2A;
+    --muted: #6b6a5e;
+    --line: #C9C3AE;
+    --serif: 'Fraunces', serif;
+    --sans: 'Work Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  :focus-visible{outline:2px solid var(--oxblood); outline-offset:3px;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,234,224,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .brand{
+    font-family:var(--serif); font-weight:600; font-size:1.15rem;
+    letter-spacing:0.01em;
+  }
+  .brand span{color:var(--oxblood); font-style:italic; font-weight:500;}
+  .navlinks{display:flex; gap:32px; font-family:var(--mono); font-size:0.78rem; letter-spacing:0.02em; text-transform:uppercase;}
+  .navlinks a{text-decoration:none; color:var(--ink); position:relative; padding-bottom:4px;}
+  .navlinks a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--oxblood); transition:width 0.25s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .navcta{
+    font-family:var(--mono); font-size:0.78rem; text-transform:uppercase;
+    border:1px solid var(--ink); padding:9px 16px; text-decoration:none;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .navcta:hover{background:var(--ink); color:var(--paper);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  /* ---------- HERO / ANNOTATED MANUSCRIPT ---------- */
+  .hero{padding:88px 0 96px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:start;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:48px;} }
+
+  .eyebrow{
+    font-family:var(--mono); font-size:0.78rem; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--oxblood); margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:'§'; font-size:1rem;}
+
+  h1{
+    font-family:var(--serif); font-weight:600; font-optical-sizing:auto;
+    font-size:clamp(2.4rem, 5.2vw, 3.7rem); line-height:1.06;
+    letter-spacing:-0.01em; margin-bottom:26px;
+  }
+  h1 em{font-style:italic; font-weight:500; color:var(--forest);}
+
+  .hero-sub{
+    font-size:1.08rem; color:#3c3b32; max-width:46ch; margin-bottom:34px;
+  }
+
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:46px;}
+  .btn-primary{
+    font-family:var(--mono); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.03em;
+    background:var(--forest); color:var(--paper); padding:14px 24px; text-decoration:none;
+    border:1px solid var(--forest); transition:background 0.2s ease, color 0.2s ease;
+  }
+  .btn-primary:hover{background:var(--forest-deep);}
+  .btn-secondary{
+    font-family:var(--mono); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.03em;
+    background:transparent; color:var(--ink); padding:14px 24px; text-decoration:none;
+    border:1px solid var(--ink); transition:background 0.2s ease, color 0.2s ease;
+  }
+  .btn-secondary:hover{background:var(--ink); color:var(--paper);}
+
+  .credentials-line{
+    display:flex; gap:28px; flex-wrap:wrap; font-family:var(--mono); font-size:0.74rem;
+    color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;
+    border-top:1px solid var(--line); padding-top:20px;
+  }
+  .credentials-line strong{color:var(--ink); font-weight:500;}
+
+  /* --- the manuscript card, signature element --- */
+  .manuscript{
+    background:#F5F2E9; border:1px solid var(--line);
+    padding:38px 34px 34px; position:relative;
+    box-shadow:6px 6px 0 var(--paper-dark), 6px 6px 0 1px var(--line);
+  }
+  .manuscript-label{
+    font-family:var(--mono); font-size:0.68rem; text-transform:uppercase; color:var(--muted);
+    letter-spacing:0.06em; margin-bottom:16px; display:flex; justify-content:space-between;
+  }
+  .ms-text{
+    font-family:var(--serif); font-size:1.12rem; line-height:1.75; color:#2b2a22;
+  }
+  .ms-text .mark{
+    position:relative; text-decoration:none;
+    background-image:linear-gradient(var(--gold), var(--gold));
+    background-repeat:no-repeat; background-size:100% 2px; background-position:0 92%;
+  }
+  .note{
+    display:block; font-family:var(--mono); font-size:0.72rem; color:var(--oxblood);
+    margin:4px 0 4px 18px; line-height:1.5;
+  }
+  .note::before{content:'↳ '; color:var(--gold);}
+  .ms-footer{
+    margin-top:22px; padding-top:16px; border-top:1px dashed var(--line);
+    font-family:var(--mono); font-size:0.72rem; color:var(--forest); text-transform:uppercase;
+    letter-spacing:0.04em; display:flex; justify-content:space-between;
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:88px 0;}
+  .section-head{margin-bottom:56px; max-width:60ch;}
+  .section-tag{
+    font-family:var(--mono); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--oxblood); margin-bottom:14px;
+  }
+  h2{
+    font-family:var(--serif); font-weight:600; font-size:clamp(1.8rem, 3.4vw, 2.5rem);
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{border-top:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-body p{margin-bottom:18px; max-width:58ch; color:#33322a;}
+  .about-body p:last-child{margin-bottom:0;}
+  .stat-block{display:flex; flex-direction:column; gap:26px;}
+  .stat{border-left:2px solid var(--gold); padding-left:18px;}
+  .stat .num{font-family:var(--serif); font-size:2.2rem; font-weight:600; line-height:1;}
+  .stat .lab{font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; color:var(--muted); letter-spacing:0.04em; margin-top:6px;}
+
+  /* ---------- SUBJECTS / SERVICES ---------- */
+  .services{background:var(--forest); color:var(--paper);}
+  .services .section-tag{color:var(--gold);}
+  .services h2{color:var(--paper);}
+  .service-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:rgba(237,234,224,0.18);
+    border:1px solid rgba(237,234,224,0.18);
+  }
+  @media (max-width:800px){ .service-grid{grid-template-columns:1fr;} }
+  .service{background:var(--forest); padding:34px 28px;}
+  .service .sv-tag{font-family:var(--mono); font-size:0.7rem; color:var(--gold); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;}
+  .service h3{font-family:var(--serif); font-weight:600; font-size:1.35rem; margin-bottom:12px;}
+  .service p{color:#D6D2C2; font-size:0.95rem; max-width:36ch;}
+
+  /* ---------- APPROACH ---------- */
+  .approach-list{display:flex; flex-direction:column;}
+  .approach-item{
+    display:grid; grid-template-columns:110px 1fr; gap:32px;
+    padding:28px 0; border-top:1px solid var(--line);
+  }
+  .approach-item:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:640px){ .approach-item{grid-template-columns:1fr; gap:8px;} }
+  .approach-mark{font-family:var(--mono); font-size:0.76rem; color:var(--oxblood); text-transform:uppercase; padding-top:4px;}
+  .approach-item h3{font-family:var(--serif); font-weight:600; font-size:1.25rem; margin-bottom:8px;}
+  .approach-item p{color:#3c3b32; max-width:56ch;}
+
+  /* ---------- TESTIMONIAL STRIP ---------- */
+  .testimonial{background:var(--paper-dark); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .t-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line);}
+  @media (max-width:760px){ .t-grid{grid-template-columns:1fr;} }
+  .t-card{background:var(--paper-dark); padding:36px 32px;}
+  .t-card p.quote{font-family:var(--serif); font-style:italic; font-size:1.15rem; line-height:1.6; margin-bottom:16px; color:#25241d;}
+  .t-card .who{font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; color:var(--muted); letter-spacing:0.03em;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block; font-family:var(--mono); font-size:0.72rem; text-transform:uppercase;
+    letter-spacing:0.04em; color:var(--muted); margin-bottom:8px;
+  }
+  .field input, .field textarea, .field select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--ink);
+    font-family:var(--sans); font-size:1rem; padding:10px 2px; color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{outline:none; border-bottom:1px solid var(--oxblood);}
+  .field textarea{resize:vertical; min-height:90px;}
+  .submit-btn{
+    font-family:var(--mono); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.03em;
+    background:var(--ink); color:var(--paper); padding:14px 26px; border:none; cursor:pointer;
+    transition:background 0.2s ease;
+  }
+  .submit-btn:hover{background:var(--oxblood);}
+  .contact-info p{margin-bottom:20px; color:#33322a; max-width:44ch;}
+  .contact-info .info-line{font-family:var(--mono); font-size:0.85rem; margin-bottom:10px;}
+  .contact-info .info-line span{color:var(--muted); display:inline-block; width:110px;}
+
+  footer{border-top:1px solid var(--line); padding:32px 0; font-family:var(--mono); font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Emma <span>— English Tuition</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#approach">Approach</a>
+      <a href="reading.html">Reading</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="navcta" href="#contact">Enquire</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Private tuition, Dulwich SE24</div>
+      <h1>English tuition that reads the sentence<br><em>and</em> the exam board.</h1>
+      <p class="hero-sub">Twenty-three years teaching English in London classrooms — from GCSE and A-Level to 11+ entrance — now working one-to-one with students who want to read more closely and write with more control.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#contact">Book a first session</a>
+        <a class="btn-secondary" href="#subjects">See subjects</a>
+      </div>
+      <div class="credentials-line">
+        <div><strong>23 years</strong> classroom experience</div>
+        <div><strong>MA</strong> English Literature</div>
+        <div><strong>PGCE</strong> QTS</div>
+        <div><strong>Ex–Head of Dept</strong></div>
+      </div>
+    </div>
+
+    <div class="manuscript" aria-hidden="false">
+      <div class="manuscript-label"><span>Marked script — Paper 2</span><span>Grade 8</span></div>
+      <p class="ms-text">
+        The writer <span class="mark">uses the storm as more than weather</span> — it becomes an extension of the narrator's own unravelling, so that the setting <span class="mark">performs the emotion</span> the character cannot yet name.
+      </p>
+      <span class="note">good — link this to the AO3 context point</span>
+      <span class="note">push further: why this image, why here?</span>
+      <div class="ms-footer"><span>Annotated in session</span><span>→ redraft by Thu</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-tag">01 — About</div>
+      <h2>A classroom teacher, working one-to-one.</h2>
+    </div>
+    <div>
+      <div class="about-body">
+        <p>I've spent over two decades teaching English in both state and independent schools across London, holding senior roles including Head of Department and Head of Key Stage Five. That means I don't just know the texts — I know the mark schemes, the examiners' reports, and exactly where students lose the marks they should have kept.</p>
+        <p>My own background is in English and American Studies (BA, first class) and postcolonial literature (MA), which shapes how I teach close reading: not as a checklist of techniques, but as a way of noticing what a text is actually doing.</p>
+        <p>I have direct teaching experience across all the major UK exam boards, including CIE iGCSE, AQA and OCR, so I know exactly how each one marks, and where the same skill needs to be presented differently for different papers.</p>
+        <p>Sessions run from my home in Dulwich, or online — whichever suits the student and the week.</p>
+      </div>
+      <div class="stat-block" style="margin-top:36px;">
+        <div class="stat"><div class="num">23</div><div class="lab">Years in the classroom</div></div>
+        <div class="stat"><div class="num">3</div><div class="lab">Senior leadership roles held</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="subjects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">02 — Subjects</div>
+      <h2>Where I can help.</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="service-grid">
+      <div class="service">
+        <div class="sv-tag">Ages 10–13</div>
+        <h3>11+, 13+ & Scholarship</h3>
+        <p>Comprehension, creative writing and verbal reasoning for independent and grammar school entry at 11+ and 13+, plus scholarship-level preparation for the most competitive papers.</p>
+      </div>
+      <div class="service">
+        <div class="sv-tag">Ages 14–16</div>
+        <h3>GCSE English</h3>
+        <p>Language and Literature papers across the major boards — essay technique, unseen poetry, and the set texts, taught to the mark scheme.</p>
+      </div>
+      <div class="service">
+        <div class="sv-tag">Ages 16–18</div>
+        <h3>A-Level & IB English</h3>
+        <p>Close reading, critical theory and coursework support for A-Level, plus IB English — I wrote the curriculum as Key Stage Five Coordinator, so I know the syllabus from the inside.</p>
+      </div>
+      <div class="service">
+        <div class="sv-tag">Ongoing</div>
+        <h3>Essay & Coursework Clinics</h3>
+        <p>Structured feedback on drafts — planning, argument, and the line-level editing that turns a good essay into a strong one.</p>
+      </div>
+      <div class="service">
+        <div class="sv-tag">One-off or termly</div>
+        <h3>Exam Preparation</h3>
+        <p>Focused revision sessions in the run-up to mocks and finals: past papers, timed practice, and targeted weak-spot work.</p>
+      </div>
+      <div class="service">
+        <div class="sv-tag">By enquiry</div>
+        <h3>Oxbridge & Scholarship</h3>
+        <p>Wider reading, personal statements and interview preparation for competitive sixth-form and university English applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">03 — Approach</div>
+      <h2>How sessions actually work.</h2>
+    </div>
+    <div class="approach-list">
+      <div class="approach-item">
+        <div class="approach-mark">Session 1</div>
+        <div><h3>A proper diagnostic</h3><p>Before we touch a text, I read a recent piece of the student's work — an essay, a report, a paper — to see exactly where the marks are being lost.</p></div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-mark">Every week</div>
+        <div><h3>Annotate, don't just discuss</h3><p>We mark the page together, the way an examiner would — so students learn to see their own writing the way it's graded, not just the way it feels to write.</p></div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-mark">Between sessions</div>
+        <div><h3>Short, specific homework</h3><p>No busywork. One redraft, one paragraph, one past-paper question — small enough to actually get done, targeted enough to move the grade.</p></div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-mark">Each term</div>
+        <div><h3>A note home</h3><p>A short written update on progress and what we're focusing on next — no jargon, no vague reassurance.</p></div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-mark">Every student</div>
+        <div><h3>Built around who's in front of me</h3><p>My first job is always the same — build real confidence, real skill, and real stretch, whatever a student's starting point. For the most able, that means genuine extension, not just more of the same. Over 23 years I've also taught students with autism, ADHD, dyslexia, slow processing speed and other specific learning differences, and worked with blind, partially sighted and deaf students, so I adapt readily to how a particular student learns best.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="wrap" style="padding:0;">
+    <div class="section-head wrap" style="padding-top:56px;">
+      <div class="section-tag">04 — From families</div>
+      <h2>Some words from recent students.</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <p class="quote">She moved my son's essays from vague to specific — he finally understands what an examiner is actually looking for.</p>
+        <div class="who">Parent, GCSE English Literature</div>
+      </div>
+      <div class="t-card">
+        <p class="quote">Patient but exacting. My daughter's confidence in her own reading changed completely over one term.</p>
+        <div class="who">Parent, A-Level English</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-tag">05 — Get in touch</div>
+      <h2 style="margin-bottom:22px;">Book a first session.</h2>
+      <div class="contact-info">
+        <p>Based in Dulwich, SE24 — sessions in person locally, or online by arrangement. Get in touch with a little about the student and what you're hoping to work on.</p>
+        <div class="info-line"><span>Email</span>hello@example.com</div>
+        <div class="info-line"><span>Area</span>Dulwich &amp; SE London</div>
+        <div class="info-line"><span>Sessions</span>In person / online</div>
+      </div>
+    </div>
+    <form id="enquiry-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="field">
+        <label for="name">Parent / student name</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="level">Level</label>
+        <select id="level" name="level">
+          <option>11+ / 13+ / Scholarship</option>
+          <option>GCSE English</option>
+          <option>A-Level / IB English</option>
+          <option>Essay / coursework clinic</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="msg">A little about what you're looking for</label>
+        <textarea id="msg" name="message"></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Send enquiry</button>
+      <p id="form-status" style="font-family:var(--mono); font-size:0.8rem; margin-top:14px; display:none;"></p>
+    </form>
+    <script>
+      const form = document.getElementById('enquiry-form');
+      const status = document.getElementById('form-status');
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const data = new FormData(form);
+        status.style.display = 'block';
+        status.style.color = 'var(--muted)';
+        status.textContent = 'Sending…';
+        try{
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if(res.ok){
+            form.reset();
+            status.style.color = 'var(--forest)';
+            status.textContent = 'Thank you — your enquiry has been sent. I\'ll reply within a couple of days.';
+          } else {
+            status.style.color = 'var(--oxblood)';
+            status.textContent = 'Something went wrong sending that — please email hello@example.com directly instead.';
+          }
+        } catch(err){
+          status.style.color = 'var(--oxblood)';
+          status.textContent = 'Something went wrong sending that — please email hello@example.com directly instead.';
+        }
+      });
+    </script>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Emma — English Tuition</div>
+    <div><a href="reading.html" style="text-decoration:none;">Reading &amp; research →</a></div>
+    <div>Dulwich, London SE24</div>
+  </div>
+</footer>
+
+</body>
+</html>
